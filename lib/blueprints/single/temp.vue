@@ -1,37 +1,36 @@
-<template lang="{{filesType.html}}">
-{% if filesType.html === 'jade' || filesType.html === 'pug' %}
-  section(class="{{name | kebabCase}}")
-    h1 {{name | kebabCase}} Component
-{% else %}
+<template>
   <section class="{{name | kebabCase}}">
-    <h1>{{name | kebabCase}} Component</h1>
+    <h1>{{name | camelCase}} Component</h1>
   </section>
-{% endif %}
 </template>
 
-<script lang="{{ filesType.script }}">
-  export default  {
-    name: '{{name | kebabCase}}',
-    props: [],
-    mounted() {
+<script>
+import { mapGetters, mapActions } from 'vuex'
 
-    },
-    data() {
-      return {
-
-      }
-    },
-    methods: {
-
-    },
-    computed: {
-
+export default  {
+  name: '{{name | camelCase}}',
+  props: [],
+  data() {
+    return {
     }
+  },
+  mounted() {
+  },
+  computed: {
+    ...mapGetters('store', [
+    ])
+  }
+  methods: {
+    ...mapActions('store', [
+    ])
+  },
+  components: {
+  }
 }
 </script>
 
-<style scoped lang="{{ filesType.style }}">
-  .{{name | kebabCase}} {
+<style>
+.{{name | kebabCase}} {
 
-  }
+}
 </style>
